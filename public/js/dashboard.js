@@ -7,4 +7,3 @@ document.addEventListener("DOMContentLoaded", function() {
   const newEntryWindow = document.querySelector(".modal");
   M.Modal.init(newEntryWindow, {});
 });
-

@@ -1,4 +1,16 @@
+*,
+html,
+body {
+  text-align: center;
+  align-items: center;
+}
+
 form.signup,
 form.login {
   margin-top: 50px;
+}
+
+.row {
+  text-align: center;
+  align-items: center;
 }

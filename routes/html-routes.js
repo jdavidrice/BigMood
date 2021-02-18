@@ -40,7 +40,7 @@ module.exports = function (app) {
     /**** Uncomment if you want html from public instead of Handlebars
     res.sendFile(path.join(__dirname, "../public/members.html"));*/
 
-    res.render("index");
+    res.render("dashboard");
   });
 
 };
