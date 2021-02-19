@@ -1,9 +1,25 @@
-// Side Nav Menu
-const slideMenu = document.querySelectorAll(".sidenav");
-M.Sidenav.init(slideMenu, {});
+// // Side Nav Menu
+// const slideMenu = document.querySelectorAll(".sidenav");
+// M.Sidenav.init(slideMenu, {});
 
-// Modal New Entry
-document.addEventListener("DOMContentLoaded", function() {
-  const newEntryWindow = document.querySelector(".modal");
-  M.Modal.init(newEntryWindow, {});
-});
+
+// function createNavContent() {
+//   console.log("It works.");
+// }
+
+
+// // Side Nav Event Listener
+// slideMenu.addEventListener("click", createNavContent);
+
+
+
+
+
+
+
+// // Modal New Entry
+// document.addEventListener("DOMContentLoaded", function () {
+//   const newEntryWindow = document.querySelector(".modal");
+//   M.Modal.init(newEntryWindow, {});
+// });
+
