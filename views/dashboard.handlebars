@@ -1,10 +1,10 @@
-<head>
-  <title>BigMood Dashboard</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <link href="stylesheets/style.css" rel="stylesheet">
-</head>
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
 
 {{!-- Nav Bar --}}
 <nav>
@@ -30,6 +30,7 @@
 
 {{!-- Side Nav Bar --}}
 <ul id="slide-out" class="sidenav">
+<<<<<<< Updated upstream
   {{!-- User Info Section --}}
   <li>
     <div class="user-view">
@@ -46,6 +47,33 @@
   </li>
   {{!-- Theme Selection Section --}}
   <li><a class="subheader">Theme</a></li>
+=======
+    {{!-- User Info Section --}}
+    <li>
+        <div class="user-view">
+            <div class="background">
+                <img src="">
+            </div>
+            <a href="#user"><i class="material-icons">account_circle</i></a>
+            <a href="#name"><span class="white-text name"></span></a>
+            <a href="#email"><span class="white-text email"></span></a>
+        </div>
+    </li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    {{!-- Theme Selection Section --}}
+      <div class="input-field col s12">
+        <select>
+          <option value="" disabled selected>Choose Your Theme</option>
+          <option value="1" id="lightTheme">Light</option>
+          <option value="2" id="darkTheme">Dark</option>
+          <option value="3" id="redTheme">Red</option>
+          <option value="4" id="blueTheme">Blue</option>
+          <option value="5" id="greenTheme">Green</option>
+        </select>
+      </div>
+>>>>>>> Stashed changes
 </ul>
 
 <div class="container">

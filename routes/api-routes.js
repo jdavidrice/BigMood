@@ -47,4 +47,110 @@ module.exports = function (app) {
       });
     }
   });
+
+  // GET route for getting all of the themes
+  app.get("/api/themes", (req, res) => {
+    db.Theme.findAll({})
+      .then((result) => {
+        res.json(result);
+      });
+  });
+
+  // GET route for getting all of the quotes
+  app.get("/api/quotes", (req, res) => {
+    db.Quote.findAll({})
+      .then((result) => {
+        res.json(result);
+      });
+  });
+
+  // GET route for getting all of the activities
+  app.get("/api/activities", (req, res) => {
+    db.Activity.findAll({})
+      .then((result) => {
+        res.json(result);
+      });
+  });
+
+  // GET route for getting all of the moods
+  app.get("/api/moods", (req, res) => {
+    db.Mood.findAll({})
+      .then((result) => {
+        res.json(result);
+      });
+  });
+
+  // GET route for retrieving a single user with theme
+  app.get("/api/users/:id", (req, res) => {
+    db.User.findOne({
+      where: {
+        id: req.params.id
+      },
+      include:[db.Theme]
+    }).then((result) => {
+      delPass(val); // Excluding password and unnessary key from result
+      res.json(result);
+    });
+  });
+
+  // GET route for retrieving all data from current user
+  app.get("/api/userdata/:userId", (req, res) => {
+    db.UserData.findAll({
+      where: {
+        userId: req.params.userId
+      },
+      include:[db.User, db.Mood, db.Activity]
+    }).then((result) => {
+      result.forEach((val) => {
+        delPass2(val); // Excluding password and unnecessary key from result
+      });
+      res.json(result);
+    });
+  });
+
+  // POST route for updating safely the theme of the current user
+  app.post("/api/update", (req, res) => {
+    let user = req.body.id;
+    let newTheme = req.body.ThemeId;
+    db.User.findOne(
+      {
+        where: {
+          id: user
+        }
+      }).then((result) => {
+      result.ThemeId = newTheme; // assign new value
+      result.save(); // save the full object
+      res.status(202).send(result); // Accepted status
+    }).catch((error) => {
+      res.status(400).send(error); // Bad request status
+    });
+  });
+
+  // POST route for adding mood and activity to the current user
+  app.post("/api/userdata", (req, res) => {
+    db.UserData.create({
+      userId: req.body.userId,
+      activityId: req.body.activityId,
+      moodId: req.body.moodId
+    }).then((result) => {
+      res.status(201).send(result); // Created status
+    }).catch((error) => {
+      console.log(error);
+      res.status(400).send(error); // Bad request status
+    });
+  });
+
+  /***************MAY NOT BE NEEDED*************/
+
+  // GET route for getting all of the users with theme
+  app.get("/api/users", (req, res) => {
+    db.User.findAll({include:[db.Theme]})
+      .then((result) => {
+        result.forEach((val) => {
+          delPass(val); // Excluding password and unnessary key from result
+        });
+        res.json(result);
+      });
+  });
+
 };
