@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
 <script>
   function addDarkmodeWidget() {
@@ -25,10 +26,18 @@
       </ul>
 >>>>>>> Stashed changes
     </div>
+=======
+{{!-- Nav Bar --}}
+<nav class="theme-switch light">
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo center">BigMood</a>
+    <a href="#" class="sidenav-trigger show-on-large" data-target="slide-out"><i class="material-icons">menu</i></a>
+>>>>>>> readme
   </div>
 </nav>
 
 {{!-- Side Nav Bar --}}
+<<<<<<< HEAD
 <ul id="slide-out" class="sidenav">
 <<<<<<< Updated upstream
   {{!-- User Info Section --}}
@@ -80,6 +89,79 @@
   <div class="row">
     <div class="col s12 m8 l6">
       <div class="card">
+=======
+<ul id="slide-out" class="sidenav center-align ">
+  {{!-- User Info Section --}}
+  <li>
+    <div class="user-view center">
+      <div class="center logo-nav">
+        <img src="../assets/img/logo.jpg" alt="logo" class="circle center">
+      </div>
+      <h5>Signed in as </h5>
+      <h6 class="current-user"></h6>
+    </div>
+  </li>
+
+  {{!-- Theme Selection Section --}}
+  <div class="input-field theme col s12">
+    <h5>Change Your Theme</h5>
+    {{!-- Color Dropdown Trigger --}}
+    <a class='dropdown-trigger btn-large' href='#' data-target="dropdown1">Theme<i class="large material-icons">
+        arrow_drop_down</i></a>
+    {{!-- Color Dropdown Structure --}}
+    <ul id='dropdown1' class='dropdown-content'>
+      <li><a href="#!" data-id="1" class="lightTheme">Light</a></li>
+      <li><a href="#!" data-id="2" class="darkTheme">Dark</a></li>
+      <li><a href="#!" data-id="3" class="redTheme">Red</a></li>
+      <li><a href="#!" data-id="4" class="blueTheme">Blue</a></li>
+      <li><a href="#!" data-id="5" class="greenTheme">Green</a></li>
+    </ul>
+  </div>
+  <li>
+    <div class="divider"></div>
+  </li>
+  <li>
+    <div class="user-view">
+      <h5>Meet The Dev Team</h5>
+      <div class="row dev-team">
+        <div class="profile col s5" onclick=location.href="https://github.com/espoldi">
+          <img
+            src="https://avatars0.githubusercontent.com/u/72423431?s=460&u=e8e36f9d7310daff1a5c3313436f30e2a34b495c&v=4"
+            alt="girl with glasses" class="circle responsive-img">
+        </div>
+        <div class="profile col s5" onclick=location.href="https://github.com/jdavidrice">
+          <img src="https://avatars.githubusercontent.com/u/24283989?s=400&v=4" alt="" class="circle responsive-img">
+        </div>
+        <div class="profile col s5" onclick=location.href="https://github.com/qifeng86">
+          <img
+            src="https://avatars.githubusercontent.com/u/65049795?s=400&u=65b453863f34b661f4c3c402cb3a54829a892b83&v=4"
+            alt="" class="circle responsive-img">
+        </div>
+        <div class="profile col s5" onclick=location.href="https://github.com/Delph-Sunny">
+          <img
+            src="https://avatars.githubusercontent.com/u/72717827?s=400&u=d48b85559ffaa993b95bb39f151a97ed4a369a6c&v=4"
+            alt="mountain girl" class="circle responsive-img">
+        </div>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class="divider"></div>
+  </li>
+  <li>
+    <h5>
+      <a href="/logout" title="Logout"><i class="material-icons">logout</i> Logout</a>
+    </h5>
+  </li>
+
+</ul>
+
+{{!-- Dashboard Content --}}
+<div class="container" id="dashContent">
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <div class="card center">
+>>>>>>> readme
         <div class="card-content">
           <h3>Dashboard Statistics</h3>
           <p>{INSERT GRAPH HERE}</p>
@@ -90,8 +172,11 @@
             <li class="tab"><a class="active" href="#activity">Most Used Activity</a></li>
             <li class="tab"><a href="#quote">Latest Quote</a></li>
           </ul>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+=======
+>>>>>>> readme
         </div>
         <div class="card-content grey lighten-4">
           <div id="mood">
@@ -101,6 +186,7 @@
             <h4>Most Used Activity</h4>
           </div>
           <div id="quote">
+<<<<<<< HEAD
             <h4>Latest Quote</h4>
           </div>
         </div>
@@ -123,10 +209,41 @@
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+            <p id="new-quote"></p>
+            <p id="author"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">All Entries</span>
+          <div class="input-field col s6">
+            <label>Sort By:</label>
+            <select>
+              <option value="">Choose your option</option>
+              <option value="1">Date</option>
+              {{#each mood}}
+              <option value="{{name}}">{{name}}</option>
+              {{/each}}
+              {{#each activities}}
+              <option value="{{name}}">{{activity.name}}</option>
+              {{/each}}
+            </select>
+
+          </div>
+        </div>
+>>>>>>> readme
       </div>
     </div>
   </div>
 </div>
+<<<<<<< HEAD
 
 {{!-- Modal New Mood Entry --}}
 <div class="container">
@@ -179,3 +296,147 @@
 =======
 <script src="../public/js/dashboard.js"></script>
 >>>>>>> Stashed changes
+=======
+</div>
+</div>
+
+<div class="row">
+  <div class="col s12 m12 l12">
+    <ul class="collapsible">
+      {{#each entry}}
+      <li>
+        <div class="collapsible-header">
+          <i class="material-icons">{{mood.icon}}</i>{{mood.name}}
+        </div>
+        <div class="collapsible-body">
+          <span>
+            Date: {{entry.createdAt}}<br>
+            Activities: <div class="chip"><i class="material-icons">{{activity.icon}}</i>{{activity.name}}</div>
+          </span>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+</div>
+</div>
+
+{{!-- Modal New Mood Entry --}}
+<button class="btn indigo hoverable modal-trigger" data-target="newEntry" id="modalButton"><i
+    class="material-icons">add</i></button>
+
+<div class="modal" id="newEntry">
+  <div class="modal-content">
+
+    <form id="createform">
+
+
+
+      <h3>How are you feeling?</h3>
+      <div id="mooodlist">
+
+        {{!-- Mood Icons --}}
+        <label>
+          <input class="with-gap" name="moodgroup" id="mooodlist1" value="1" type="radio" />
+          <span><i class="material-icons">sentiment_very_satisfied</i></span>
+        </label>
+        <label>
+          <input class="with-gap" name="moodgroup" id="mooodlist2" value="2" type="radio" />
+          <span><i class="material-icons">sentiment_satisfied</i></span>
+        </label>
+        <label>
+          <input class="with-gap" name="moodgroup" id="mooodlist3" value="3" type="radio" />
+          <span><i class="material-icons">sentiment_neutral</i></span>
+        </label>
+        <label>
+          <input class="with-gap" name="moodgroup" id="mooodlist4" value="4" type="radio" />
+          <span><i class="material-icons">sentiment_dissatisfied</i></span>
+        </label>
+        <label>
+          <input class="with-gap" name="moodgroup" id="mooodlist5" value="5" type="radio" />
+          <span><i class="material-icons">sentiment_very_dissatisfied</i></span>
+        </label>
+
+      </div>
+
+
+      <div class="divider"></div>
+
+
+
+      <h3>What are you doing?</h3>
+      <div id="activitylist">
+        {{!-- Activity Icons --}}
+        <label>
+          <input class="with-gap" name="activitygroup" id="activitylist1" value="1" type="radio" />
+          <span><i class="material-icons">delete</i></span>
+        </label>
+        <label>
+          <input class="with-gap" name="activitygroup" id="activitylist2" value="2" type="radio" />
+          <span><i class="material-icons">directions_run</i></span>
+        </label>
+        <label>
+          <input class="with-gap" name="activitygroup" id="activitylist3" value="3" type="radio" />
+          <span><i class="material-icons">group</i></span>
+        </label>
+        <label>
+          <input class="with-gap" name="activitygroup" id="activitylist4" value="4" type="radio" />
+          <span><i class="material-icons">casino</i></span>
+        </label>
+        <label>
+          <input class="with-gap" name="activitygroup" id="activitylist5" value="5" type="radio" />
+          <span><i class="material-icons">home</i></span>
+        </label>
+        <label>
+          <input class="with-gap" name="activitygroup" id="activitylist6" value="6" type="radio" />
+          <span><i class="material-icons">free_breakfast</i></span>
+        </label>
+        <label>
+          <input class="with-gap" name="activitygroup" id="activitylist7" value="7" type="radio" />
+          <span><i class="material-icons">album</i></span>
+        </label>
+        <label>
+          <input class="with-gap" name="activitygroup" id="activitylist8" value="8" type="radio" />
+          <span><i class="material-icons">book</i></span>
+        </label>
+        <label>
+          <input class="with-gap" name="activitygroup" id="activitylist9" value="9" type="radio" />
+          <span><i class="material-icons">directions_car</i></span>
+        </label>
+        <label>
+          <input class="with-gap" name="activitygroup" id="activitylist10" value="10" type="radio" />
+          <span><i class="material-icons">tv</i></span>
+        </label>
+        <label>
+          <input class="with-gap" name="activitygroup" id="activitylist11" value="11" type="radio" />
+          <span><i class="material-icons">domain</i></span>
+        </label>
+      </div>
+
+
+      <div class="divider"></div>
+
+
+      <div class="modal-footer">
+        <button type="submit" class="btn green">Submit</button>
+        <button class="btn red modal-close">Cancel</button>
+      </div>
+
+
+    </form>
+
+  </div>
+</div>  
+
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+{{!-- Link to Dashboard JS --}}
+<script src="./js/dashboard.js"></script>
+>>>>>>> readme

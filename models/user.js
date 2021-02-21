@@ -4,19 +4,26 @@ const bcrypt = require("bcryptjs");
 // Creating our User model
 module.exports = function (sequelize, DataTypes) {
   const User = sequelize.define("User", {
+    name: {
+      type: DataTypes.STRING(50),
+      allowNull: true,
+      validate: {
+        is: /^[a-z\s\-]+$/i
+      },
+    },
     // The email cannot be null, and must be a proper email before creation
     email: {
       type: DataTypes.STRING(50),
       allowNull: false,
       unique: true,
       validate: {
-        isEmail: true,
+        isEmail: true
       },
     },
     // The password cannot be null
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     }
   });
   // Can unhashed password entered by user be compared to hashed password stored in our database?
@@ -36,10 +43,14 @@ module.exports = function (sequelize, DataTypes) {
   User.associate = (models) => {
     // Associating User with Theme
     User.belongsTo(models.Theme, {
-      foreignKey: "themeId",
-      targetKey: "id",
-      allowNull: false,
-      defaultValue: 1
+      foreignKey: {
+        allowNull: false,
+        defaultValue: 1
+      }
+    });
+    User.hasMany(models.UserData, {
+      foreignKey: "userId",
+      targetKey: "id"
     });
   };
 

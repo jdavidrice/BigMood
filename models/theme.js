@@ -13,13 +13,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   );
 
+  // Add associations
   Theme.associate = (models) => {
     // Associating Theme with User
     Theme.hasMany(models.User, {
-      foreignKey: "themeId",
-      targetKey: "id",
-      allowNull: false,
-      defaultValue: 1
+      onDelete: "cascade"
     });
   };
 

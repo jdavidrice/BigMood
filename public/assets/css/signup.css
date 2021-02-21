@@ -1,10 +1,11 @@
-body {
+body, html {
   color: #000;
   overflow-x: hidden;
   height: 100%;
   background-image: linear-gradient(to right, #D500F9, #FFD54F);
-  background-repeat: no-repeat
-}
+  background-repeat: no-repeat;
+
+  }
 
 input,
 textarea {
@@ -17,7 +18,8 @@ textarea {
   border: 1px solid #F3E5F5 !important;
   font-size: 16px !important;
   color: #000 !important;
-  font-weight: 400
+  font-weight: 400;
+
 }
 
 input:focus,
@@ -27,7 +29,8 @@ textarea:focus {
   box-shadow: none !important;
   border: 1px solid #D500F9 !important;
   outline-width: 0;
-  font-weight: 400
+  font-weight: 400;
+
 }
 
 button:focus {
@@ -39,12 +42,14 @@ button:focus {
 
 .card {
   border-radius: 0;
-  border: none
+  border: none;
+  background-image: url("../img/signup.jpg");
 }
 
 .card1 {
   width: 50%;
-  padding: 40px 30px 10px 30px
+  padding: 40px 30px 10px 30px;
+
 }
 
 .card2 {
@@ -53,8 +58,8 @@ button:focus {
 }
 
 #logo {
-  width: 70px;
-  height: 60px
+  width: 6rem;
+  height: 6rem;
 }
 
 .heading {
@@ -68,6 +73,7 @@ button:focus {
 
 :-ms-input-placeholder {
   color: #000 !important
+  
 }
 
 ::-ms-input-placeholder {
@@ -77,6 +83,7 @@ button:focus {
 .form-control-label {
   font-size: 12px;
   margin-left: 15px
+  
 }
 
 .msg-info {
@@ -91,7 +98,11 @@ button:focus {
   padding: 15px;
   cursor: pointer;
   border: none !important;
-  margin-top: 40px
+  margin-top: 40px;
+  text-align: center;
+  width: 175px;
+  float: center;
+
 }
 
 .btn-color:hover {
@@ -101,15 +112,17 @@ button:focus {
 
 .btn-white {
   border-radius: 50px;
-  color: #D500F9;
   background-color: #fff;
+  color: #D500F9;
   padding: 8px 40px;
   cursor: pointer;
-  border: 2px solid #D500F9 !important
+  border: 2px solid #D500F9 !important;
+  width: 175px;
+  margin-left: 15px;
 }
 
 .btn-white:hover {
-  color: #fff;
+
   background-image: linear-gradient(to right, #FFD54F, #D500F9)
 }
 
@@ -161,19 +174,26 @@ a:hover {
   }
 }
 
-.footer {
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  font-weight: bold;
-  
-}
-
 li {
   
   list-style:none;
   background-image:none;
   background-repeat:none;
   background-position:0; 
+}
+
+h3 {
+
+  text-align: center;
+}
+
+footer {
+  left: 0;
+  bottom: 0; 
+  margin-top: 2rem; 
+}
+
+footer p {
+  margin-bottom: 0;
+  margin-top: 0;
 }

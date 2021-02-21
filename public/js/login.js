@@ -1,14 +1,15 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-use-before-define */
 /* eslint-disable linebreak-style */
-$(document).ready(function () {
+$(document).ready(() => {
+  M.AutoInit(); // Initialize Toasts
   // Getting references to our form and inputs
   var loginForm = $("form.login");
   var emailInput = $("input#email-input");
   var passwordInput = $("input#password-input");
 
   // When the form is submitted, we validate there's an email and password entered
-  loginForm.on("submit", function (event) {
+  loginForm.on("submit", (event) => {
     event.preventDefault();
     var userData = {
       email: emailInput.val().trim(),
@@ -16,6 +17,7 @@ $(document).ready(function () {
     };
 
     if (!userData.email || !userData.password) {
+      M.toast({ html: "Ooops! <br> You forgot to enter your email and/or password.", classes: "rounded" });
       return;
     }
 
@@ -31,12 +33,14 @@ $(document).ready(function () {
       email: email,
       password: password
     })
-      .then(function () {
+      .then(() => {
         window.location.replace("/dashboard");
-        // If there's an error, log the error
       })
-      .catch(function (err) {
-        console.log(err);
+      .catch((err) => { // If there's an error, log the error
+        console.log(`An error occured: ${JSON.stringify(err)}`);
+        if (err.status === 401) {
+          M.toast({ html: "Ooops! <br> Wrong email and/or password.", classes: "rounded" });
+        }
       });
   }
 });

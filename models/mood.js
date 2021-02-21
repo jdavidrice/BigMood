@@ -7,16 +7,31 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         isIn: [["excited", "happy", "neutral", "sad", "breakdown"]]
       }
+    },
+    icon: {
+      type: DataTypes.STRING(30),
+      allowNull: false,
+      unique: true,
+      validate: {
+        isIn: [[
+          "sentiment_very_satisfied",
+          "sentiment_satisfied",
+          "sentiment_neutral",
+          "sentiment_dissatisfied",
+          "sentiment_very_dissatisfied"
+        ]]
+      }
     }
   }, {
     timestamps: false // disable createAt and updateAt
   }
   );
-
+  // Add associations
   Mood.associate = (models) => {
+    // Associating Mood with UserData
     Mood.hasMany(models.UserData, {
-      foreignKey: "fk_mood",
-      targetKey: "name"
+      foreignKey: "moodId",
+      targetKey: "id"
     });
   };
   return Mood;

@@ -1,40 +1,50 @@
 /* eslint-disable linebreak-style */
 // Requiring our models and passport as we've configured it
-var db = require("../models");
-var passport = require("../config/passport");
+const db = require("../models");
+const passport = require("../config/passport");
 
-module.exports = function (app) {
+module.exports = (app) => {
+
+  // function to delete the display of the password and ThemeId
+  const delPass = (val) => {
+    delete val.dataValues.password;
+    // delete val.dataValues.ThemeId;
+    return val;
+  };
+
+  // function to delete the display of the password and ThemeId when associated table
+  const delPass2 = (val) => {
+    delete val.dataValues.User.dataValues.password;
+    delete val.dataValues.User.dataValues.ThemeId;
+    return val;
+  };
+
   // Using the passport.authenticate middleware with our local strategy.
-  // If the user has valid login credentials, send them to the dashboard page.
-  // Otherwise the user will be sent an error
-  app.post("/api/login", passport.authenticate("local"), function (req, res) {
+  // If the user has valid login credentials, send them to the members page. Otherwise the user will be sent an error
+  app.post("/api/login", passport.authenticate("local"), (req, res) => {
     res.json(req.user);
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
-  app.post("/api/signup", function (req, res) {
+  app.post("/api/signup", (req, res) => {
     db.User.create({
+      name: req.body.name,
       email: req.body.email,
       password: req.body.password
     })
-      .then(function () {
-        res.redirect(307, "/api/login");
+      .then(() => {
+        res.redirect(307, "/api/login"); // Temporary Redirect status
       })
-      .catch(function (err) {
-        res.status(401).json(err);
+      .catch((err) => {
+        res.status(401).json(err); // Unauthorized status
       });
   });
 
-  // Route for logging user out
-  app.get("/logout", function (req, res) {
-    req.logout();
-    res.redirect("/");
-  });
 
   // Route for getting some data about our user to be used client side
-  app.get("/api/user_data", function (req, res) {
+  app.get("/api/user_data", (req, res) => {
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});
@@ -42,6 +52,7 @@ module.exports = function (app) {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
+        name: req.user.name,
         email: req.user.email,
         id: req.user.id
       });
@@ -80,7 +91,7 @@ module.exports = function (app) {
       });
   });
 
-  // GET route for retrieving a single user with theme
+  // GET route for retrieveing a single user with theme
   app.get("/api/users/:id", (req, res) => {
     db.User.findOne({
       where: {
@@ -88,12 +99,12 @@ module.exports = function (app) {
       },
       include:[db.Theme]
     }).then((result) => {
-      delPass(val); // Excluding password and unnessary key from result
+      delPass(result); // Excluding password and unnessary key from result
       res.json(result);
     });
   });
 
-  // GET route for retrieving all data from current user
+  // GET route for retrieveing all data from current user
   app.get("/api/userdata/:userId", (req, res) => {
     db.UserData.findAll({
       where: {
@@ -102,7 +113,7 @@ module.exports = function (app) {
       include:[db.User, db.Mood, db.Activity]
     }).then((result) => {
       result.forEach((val) => {
-        delPass2(val); // Excluding password and unnecessary key from result
+        delPass2(val); // Excluding password and unnessary key from result
       });
       res.json(result);
     });
@@ -122,7 +133,11 @@ module.exports = function (app) {
       result.save(); // save the full object
       res.status(202).send(result); // Accepted status
     }).catch((error) => {
-      res.status(400).send(error); // Bad request status
+      console.log(error);
+      res.status(400).send( // Bad request status
+        {
+          error: "Something went wrong. Please try again later."
+        });
     });
   });
 
@@ -136,7 +151,10 @@ module.exports = function (app) {
       res.status(201).send(result); // Created status
     }).catch((error) => {
       console.log(error);
-      res.status(400).send(error); // Bad request status
+      res.status(400).send( // Bad request status
+        {
+          error: "Something went wrong. Please try again later."
+        });
     });
   });
 

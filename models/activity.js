@@ -20,16 +20,38 @@ module.exports = (sequelize, DataTypes) => {
           "work"
         ]]
       }
+    },
+    icon: {
+      type: DataTypes.STRING(15),
+      allowNull: false,
+      unique: true,
+      validate: {
+        isIn: [[
+          "delete",
+          "directions_run",
+          "child_friendly",
+          "group",
+          "casino",
+          "home",
+          "free_breakfast",
+          "album",
+          "book",
+          "directions_car",
+          "tv",
+          "domain"
+        ]]
+      }
     }
   }, {
     timestamps: false // disable createAt and updateAt
   }
   );
-
+  // Add associations
   Activity.associate = (models) => {
+    // Associating Activity with UserData
     Activity.hasMany(models.UserData, {
-      foreignKey: "fk_activity",
-      targetKey: "name"
+      foreignKey: "activityId",
+      targetKey: "id"
     });
   };
   return Activity;
