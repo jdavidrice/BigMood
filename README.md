@@ -3,7 +3,7 @@
 # BigMood 
   
 [![Build Status](https://travis-ci.com/espoldi/bigmood.svg?branch=main)](https://travis-ci.com/espoldi/bigmood)
-![GitHub commits since latest release (by SemVer)](https://img.shields.io/github/commits-since/espoldi/bigmood/latest/main) 
+![GitHub commits since latest release (by SemVer)](https://img.shields.io/github/commits-since/espoldi/BigMood/latest/main) 
 [![GitHub license](https://img.shields.io/github/license/espoldi/bigmood)](https://github.com/espoldi/bigmood/blob/master/LICENSE) 
 
 </span>  
@@ -31,7 +31,7 @@ The deployed app can be found online here: [BigMood App](https://https://bigmood
 
 ## Motivation   
 
-This app was designed to address the issue of wanting to become more aware of changes in mood throughout the day. It gives our users a simple, non-obtrusive way to track their mood and accompanying activities, to ultimately help them become more aware of their mental states. Noticing and identifying moods, and being able to look back and analyze mood changes, will hopefully allow our users to focus more on doing activities that are correlated with a positive mood, and to hopefully avoid those activities that are correlated with negative mood. 
+This app was designed to address the issue of wanting to become more aware of changes in mood throughout the day. It gives our users a simple, non-obtrusive way to track their mood and accompanying activities, to ultimately help them become more aware of their mental states. Noticing and identifying moods, and being able to look back and analyze mood changes, will allow our users to focus more on doing activities that are correlated with a positive mood, and to hopefully avoid those activities that are correlated with negative mood. 
 
 *   [Return to Top](#BigMood)  
 
