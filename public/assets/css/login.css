@@ -4,7 +4,6 @@ body, html {
   height: 100%;
   background-image: linear-gradient(to right, #D500F9, #FFD54F);
   background-repeat: no-repeat;
-
   }
 
 input,
@@ -48,6 +47,9 @@ button:focus {
 }
 
 .card1 {
+  display: flex;
+  flex-flow: column wrap;
+  /* align-items: center; */
   width: 50%;
   padding: 40px 30px 10px 30px;
   
@@ -58,6 +60,23 @@ button:focus {
   background-image: linear-gradient(to right, #FFD54F, #D500F9)
 }
 
+.login-button-row {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+#loginbutton {
+  max-width: 100%;
+  margin: auto;
+  margin-top: 5rem;
+}
+
+#createnewbutton {
+  max-width: 100%;
+  margin: auto;
+  margin-bottom: 4rem;
+}
 #logo {
   height: 6rem;
   width: 6rem;
