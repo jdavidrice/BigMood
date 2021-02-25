@@ -90,3 +90,8 @@ h5 {
     font-size: 1.8rem;
   }
 }
+
+html {
+    visibility: visible;
+    opacity: 1;
+}

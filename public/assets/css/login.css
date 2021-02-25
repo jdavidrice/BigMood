@@ -203,3 +203,8 @@ footer p {
   margin-bottom: 0;
   margin-top: 0;
 }
+
+html {
+    visibility: visible;
+    opacity: 1;
+}
