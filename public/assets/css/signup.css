@@ -60,6 +60,7 @@ button:focus {
 #logo {
   width: 6rem;
   height: 6rem;
+  border-radius: 13px;
 }
 
 #toast-container {

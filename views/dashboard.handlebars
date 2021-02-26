@@ -24,7 +24,7 @@
   <div class="input-field theme col s12">
     <h5>Change Your Theme</h5>
     {{!-- Color Dropdown Trigger --}}
-    <a class='dropdown-trigger btn-large theme-switch' href='#' data-target="dropdown1">Theme<i
+    <a class='dropdown-trigger btn-large theme-switch' id="changeThemeBtn" href='#' data-target="dropdown1">Theme<i
         class="large material-icons theme-switch">
         arrow_drop_down</i></a>
     {{!-- Color Dropdown Structure --}}
@@ -164,8 +164,7 @@
 </div>
 
 {{!-- Modal New Mood Entry --}}
-<button class="btn theme-switch hoverable modal-trigger" data-target="newEntry" id="modalButton"><i
-    class="material-icons">add</i></button>
+<a class="btn-floating btn-large red modal-trigger pulse" data-target="newEntry" id="modalButton"><i class="material-icons">add</i></a>
 
 <div class="modal" id="newEntry">
   <div class="modal-content">

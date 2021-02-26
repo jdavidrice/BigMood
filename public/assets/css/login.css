@@ -67,6 +67,7 @@ button:focus {
 #logo {
   height: 6rem;
   width: 6rem;
+  border-radius: 13px;
 }
 
 .heading {
