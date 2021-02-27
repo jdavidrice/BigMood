@@ -3,9 +3,9 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING(10),
       allowNull: false,
-      defaultValue: "gray",
+      defaultValue: "grey",
       validate: {
-        isIn: [["gray", "black", "red", "blue", "green"]]
+        isIn: [["grey", "black", "red", "blue", "green"]]
       }
     }
   }, {

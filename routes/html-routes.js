@@ -39,15 +39,17 @@ module.exports = function (app) {
 
     const result3 = await db.Activity.findAll();
 
+    const result4 = await db.Theme.findAll();
+
 
     res.render("dashboard", {
       style: "dashboard.css",
       entries: result1,
       moods: result2,
-      activities: result3
+      activities: result3,
+      themes: result4
     });
   });
-
 
   // Route for logging user out
   app.get("/logout", (req, res) => {

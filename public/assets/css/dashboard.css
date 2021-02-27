@@ -15,6 +15,10 @@ nav {
   border-radius: 6px;
 }
 
+.dropdown-trigger {
+  background-color: transparent;
+}
+
 .card-content {
   align-content: center;
 }
@@ -29,6 +33,7 @@ nav {
 }
 
 .dev-team {
+  background-color: transparent;
   margin-bottom: 2rem;
   border-radius: 2rem;
   display: flex;
@@ -81,6 +86,7 @@ nav {
 }
 
 #modalButton {
+  background-color: transparent;
   position: sticky;
   left: 1rem;
   bottom: 1rem;

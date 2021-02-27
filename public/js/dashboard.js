@@ -185,60 +185,41 @@ $(document).ready(function () {
 
   }
 
-
   // Function to change color class based on the themeId
-  function displayTheme(theme) {
+  function displayTheme(color) {
     const themeSwitch = $(".theme-switch");
     const themeText = $(".theme-text");
-    let color;
-    switch (theme) {
-    case 2: color = "black";
-      break;
-    case 3: color = "red";
-      break;
-    case 4: color = "blue";
-      break;
-    case 5: color = "green";
-      break;
-    default: color = "grey";
-    }
-    themeSwitch.each(function () {
-      if ((themeSwitch.hasClass("red"))) {
-        themeSwitch.removeClass("red");
-      }
-      if ((themeSwitch.hasClass("blue"))) {
-        themeSwitch.removeClass("blue");
-      }
-      if ((themeSwitch.hasClass("green"))) {
-        themeSwitch.removeClass("green");
-      }
-      if ((themeSwitch.hasClass("black"))) {
-        themeSwitch.removeClass("black");
-      }
-      if ((themeSwitch.hasClass("grey"))) {
-        themeSwitch.removeClass("grey");
-      }
-      themeSwitch.addClass(color);
-    });
 
-    // Change text color
-    themeText.each(function() {
-      if((themeText.hasClass("red-text"))){
-        themeText.removeClass("red-text");
+    let themeObj;
+    let themeList = [];
+    // Get all themes from the table db
+    $.get("/api/themes").then((data) => {
+      for (let i = 0; i < data.length; i++){
+        themeObj = {
+          id: data[i].id,
+          name: data[i].name
+        };
+        themeList.push(themeObj);
       }
-      if((themeText.hasClass("blue-text"))){
-        themeText.removeClass("blue-text");
-      }
-      if((themeText.hasClass("green-text"))){
-        themeText.removeClass("green-text");
-      }
-      if((themeText.hasClass("black-text"))){
-        themeText.removeClass("black-text");
-      }
-      if ((themeText.hasClass("grey-text"))) {
-        themeText.removeClass("grey-text");
-      }
-      themeText.addClass(`${color}-text`);
+      // Change background color
+      themeSwitch.each(() => {
+        for (let i = 0; i < themeList.length; i++){
+          if ((themeSwitch.hasClass(themeList[i].name))) {
+            themeSwitch.removeClass(themeList[i].name);
+          }
+        }
+        themeSwitch.addClass(color);
+      });
+
+      // Change text color
+      themeText.each(() => {
+        for (let i = 0; i < themeList.length; i++){
+          if ((themeText.hasClass(`${themeList[i].name}-text`))) {
+            themeText.removeClass(`${themeList[i].name}-text`);
+          }
+        }
+        themeText.addClass(`${color}-text`);
+      });
     });
   }
 
@@ -246,9 +227,8 @@ $(document).ready(function () {
   // Get the current theme for the current user
   function getTheme(id) {
     $.get(`/api/users/${id}`).then((data) => {
-      let userTheme = data.Theme.id; // current user Theme
       let theme = data.Theme.name; // current Theme name
-      displayTheme(userTheme);
+      displayTheme(theme);
       statChart(id, theme); // Display Chart with theme
       return theme;
     });
