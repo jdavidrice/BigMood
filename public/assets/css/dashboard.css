@@ -7,10 +7,12 @@ h5 {
   margin-bottom: 1.5rem;  
 }
 
+nav {
+  background-color: transparent;
+}
+
 #changeThemeBtn {
   border-radius: 6px;
-  align-content: center;
-  align-items: center;
 }
 
 .card-content {
@@ -49,6 +51,17 @@ h5 {
   border: 1px solid;
 }
 
+/* .entries-list {
+  margin: auto;
+  width: 100%;
+} */
+
+.collapsible {
+  margin: auto;
+  width: 100%;
+}
+
+
 #chart {
   max-width: 35rem;
   max-height: 25rem;
@@ -62,7 +75,7 @@ h5 {
 }
 
 #dashContent {
-  background-color: lightgray;
+  background-color: transparent;
   align-content: center;
   margin-top: 1rem;
 }

@@ -134,37 +134,40 @@
               </select>
             </div>
           </div>
+
+          <div class="row entries-list">
+            {{!-- <div class="col s12 m12 l12" id="entriesList"> --}}
+              <ul class="collapsible">
+                {{#each entries}}
+                <li>
+                  <div class="collapsible-header">
+                    <i class="material-icons">{{dataValues.Mood.dataValues.icon}}</i>{{dataValues.Mood.dataValues.name}}
+                  </div>
+                  <div class="collapsible-body">
+                    <span class="result">
+                      Date: {{dataValues.createdAt}}<br>
+                      Activity: <div class="chip"><i
+                          class="material-icons">{{dataValues.Activity.dataValues.icon}}</i>{{dataValues.Activity.dataValues.name}}
+                      </div>
+                    </span>
+                  </div>
+                </li>
+                {{/each}}
+              </ul>
+            {{!-- </div> --}}
+          </div>
+
         </div>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col s12 m12 l12">
-      <ul class="collapsible">
-        {{#each entries}}
 
-        <li>
-          <div class="collapsible-header">
-            <i class="material-icons">{{dataValues.Mood.dataValues.icon}}</i>{{dataValues.Mood.dataValues.name}}
-          </div>
-          <div class="collapsible-body">
-            <span class="result">
-              Date: {{dataValues.createdAt}}<br>
-              Activities: <div class="chip"><i
-                  class="material-icons">{{dataValues.Activity.dataValues.icon}}</i>{{dataValues.Activity.dataValues.name}}
-              </div>
-            </span>
-          </div>
-        </li>
-        {{/each}}
-      </ul>
-    </div>
-  </div>
 </div>
 
 {{!-- Modal New Mood Entry --}}
-<a class="btn-floating btn-large red modal-trigger pulse" data-target="newEntry" id="modalButton"><i class="material-icons">add</i></a>
+<a class="btn-floating btn-large red modal-trigger pulse" data-target="newEntry" id="modalButton"><i
+    class="material-icons">add</i></a>
 
 <div class="modal" id="newEntry">
   <div class="modal-content">
