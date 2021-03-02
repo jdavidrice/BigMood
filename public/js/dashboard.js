@@ -30,15 +30,15 @@ $(document).ready(function () {
 
 
   // Function to get the most commonly found in an array
-  function commonlyUsed(arr){
-    return arr.sort((a,b) =>
-      arr.filter(v => v===a).length
-      - arr.filter(v => v===b).length
+  function commonlyUsed(arr) {
+    return arr.sort((a, b) =>
+      arr.filter(v => v === a).length
+      - arr.filter(v => v === b).length
     ).pop();
   }
 
   //Function to calculate the average
-  function average(total, counter){
+  function average(total, counter) {
     let avg = 0;
     if (counter) {
       avg = total / counter;
@@ -47,7 +47,7 @@ $(document).ready(function () {
   }
 
   // Function to draw the chart
-  function drawChart(labelX, labelY, data, color){
+  function drawChart(labelX, labelY, data, color) {
     let ctx = $("#chart").get(0).getContext("2d");
     new Chart(ctx, {
       type: "bar",
@@ -95,20 +95,20 @@ $(document).ready(function () {
   }
 
   // Function to get the data to draw the chart
-  function statChart(id, color){
-    let userMoods = [], entryDates = [], datesIndex=[], avgMood=[];
+  function statChart(id, color) {
+    let userMoods = [], entryDates = [], datesIndex = [], avgMood = [];
     let sundayTotal = 0, mondayTotal = 0, tuesdayTotal = 0,
       wednesdayTotal = 0, thursdayTotal = 0, fridayTotal = 0, saturdayTotal = 0,
-      sundayCounter=0, mondayCounter=0, tuesdayCounter=0, wednesdayCounter=0,
-      thursdayCounter=0, fridayCounter=0, saturdayCounter=0;
-    const weekdayArr= ["Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"];
+      sundayCounter = 0, mondayCounter = 0, tuesdayCounter = 0, wednesdayCounter = 0,
+      thursdayCounter = 0, fridayCounter = 0, saturdayCounter = 0;
+    const weekdayArr = ["Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"];
 
     // Get data from API for the last 7 days
     $.get(`/api/userdata2/${id}`).then((res) => {
       let index; let date;
 
       // Pushing result in differents arrays
-      for (let i = 0; i < res.length; i++){
+      for (let i = 0; i < res.length; i++) {
         userMoods.push(res[i].moodId); // Get all moodId for a user in the last 7 days
         date = res[i].updatedAt;
         index = new Date(date).getDay(); // Get the index of the week day
@@ -119,32 +119,32 @@ $(document).ready(function () {
       console.log("Entrydates for graph: ", entryDates); //FOR TESTING
       console.log("datesindex for graph: ", datesIndex); //FOR TESTING
 
-      for(let i = 0; i< datesIndex.length; i++){
+      for (let i = 0; i < datesIndex.length; i++) {
         switch (datesIndex[i]) {
-        case 1: mondayTotal +=userMoods[i];
+        case 1: mondayTotal += userMoods[i];
           mondayCounter++;
           break;
-        case 2: tuesdayTotal +=userMoods[i];
+        case 2: tuesdayTotal += userMoods[i];
           tuesdayCounter++;
           break;
-        case 3: wednesdayTotal +=userMoods[i];
+        case 3: wednesdayTotal += userMoods[i];
           wednesdayCounter++;
           break;
-        case 4: thursdayTotal +=userMoods[i];
+        case 4: thursdayTotal += userMoods[i];
           thursdayCounter++;
           break;
-        case 5: fridayTotal +=userMoods[i];
+        case 5: fridayTotal += userMoods[i];
           fridayCounter++;
           break;
-        case 6: saturdayTotal +=userMoods[i];
+        case 6: saturdayTotal += userMoods[i];
           saturdayCounter++;
           break;
-        default: sundayTotal +=userMoods[i]; // Case 0
+        default: sundayTotal += userMoods[i]; // Case 0
           sundayCounter++;
           break;
         }
       }
-      console.log("Example with Tuesday (mood total): ", tuesdayTotal ); //FOR TESTING
+      console.log("Example with Tuesday (mood total): ", tuesdayTotal); //FOR TESTING
       console.log("Example with Tuesday (counter): ", tuesdayCounter); //FOR TESTING
       // Populate average mood/day
       avgMood.push(average(sundayTotal, sundayCounter));
@@ -159,25 +159,37 @@ $(document).ready(function () {
 
       // Find today's day:
       const today = new Date();
-      const todayIndex = today.getDay();
+      const todayIndex = 6;
       console.log("today's date", today); // FOR TESTING
       console.log("todayindex ", todayIndex); // FOR TESTING
 
       /***TO DO: REODER ARRAY BASE OF TODAY AS LAST ARRAY INDEX ***/
 
       /***TO DO: BUILD DYNAMIC ARRAY WITH LAST INDEX BEING TODAY'S DAY ***/
-      let arrayX= ["M", "T", "W", "T", "F", "S", "S"];
+      const days = ["S", "M", "T", "W", "T", "F", "S"];
+
+      let dynamicDays = [];
+
+      for (i = todayIndex + 1; dynamicDays.length < 7; i++) {
+        if (i > days.length - 1) {
+          i = 0;
+        }
+        dynamicDays.push(days[i]);
+      }
+      console.log("dynamicDays", dynamicDays);
+      // TWThFSSM.
+
 
       // Temporary hardcoded data for Yaxis
-      let arrayY = [
-        "<i class=\"material-icons\"> </i>",
-        "<i class=\"material-icons\">sentiment_very_dissatisfied</i>",
-        "<i class=\"material-icons\">sentiment_dissatisfied</i>",
-        "<i class=\"material-icons\">sentiment_neutral</i>",
-        "<i class=\"material-icons\">sentiment_satisfied</i>",
-        "<i class=\"material-icons\">sentiment_very_satisfied</i>"
+      // let arrayY = [
+      //   "<i class=\"material-icons\"> </i>",
+      //   "<i class=\"material-icons\">sentiment_very_dissatisfied</i>",
+      //   "<i class=\"material-icons\">sentiment_dissatisfied</i>",
+      //   "<i class=\"material-icons\">sentiment_neutral</i>",
+      //   "<i class=\"material-icons\">sentiment_satisfied</i>",
+      //   "<i class=\"material-icons\">sentiment_very_satisfied</i>"
 
-      ];
+      // ];
 
       drawChart(arrayX, arrayY, avgMood, color); // Draw the chart
 
@@ -194,7 +206,7 @@ $(document).ready(function () {
     let themeList = [];
     // Get all themes from the table db
     $.get("/api/themes").then((data) => {
-      for (let i = 0; i < data.length; i++){
+      for (let i = 0; i < data.length; i++) {
         themeObj = {
           id: data[i].id,
           name: data[i].name
@@ -203,7 +215,7 @@ $(document).ready(function () {
       }
       // Change background color
       themeSwitch.each(() => {
-        for (let i = 0; i < themeList.length; i++){
+        for (let i = 0; i < themeList.length; i++) {
           if ((themeSwitch.hasClass(themeList[i].name))) {
             themeSwitch.removeClass(themeList[i].name);
           }
@@ -213,7 +225,7 @@ $(document).ready(function () {
 
       // Change text color
       themeText.each(() => {
-        for (let i = 0; i < themeList.length; i++){
+        for (let i = 0; i < themeList.length; i++) {
           if ((themeText.hasClass(`${themeList[i].name}-text`))) {
             themeText.removeClass(`${themeList[i].name}-text`);
           }
@@ -235,14 +247,14 @@ $(document).ready(function () {
   }
 
   // Function to get all moods average and most used activities
-  function MoodsActivities(id){
+  function MoodsActivities(id) {
     $.get(`/api/userdata/${id}`).then((data) => {
-      let userMoods = [], userActivities = [], userActivitiesList =[];
+      let userMoods = [], userActivities = [], userActivitiesList = [];
       let moodAvgIcon, moodAvgName, myActivityIcon;
       let userActivitiesObject;
 
       // Pushing result in differents arrays
-      for (let i = 0; i < data.length; i++){
+      for (let i = 0; i < data.length; i++) {
         userMoods.push(data[i].moodId); // Get all moodId for a user
         userActivities.push(data[i].Activity.name); // Get all activities for a user
         userActivitiesObject = { // Object containing name and icon
@@ -257,7 +269,7 @@ $(document).ready(function () {
       for (let i = 0; i < userMoods.length; i++) {
         total += userMoods[i];
       }
-      let moodAvg= Math.round(total/userMoods.length);
+      let moodAvg = Math.round(total / userMoods.length);
 
       // Finding the matching icon and name for the mood average
       switch (moodAvg) {
@@ -280,9 +292,9 @@ $(document).ready(function () {
       $("#my-mood").text(moodAvgName); // Display name
 
       // Getting the most common activity and finding its icon
-      let myActivity= commonlyUsed(userActivities);
-      for (let i = 0; i< userActivitiesList.length; i++) {
-        if (myActivity === userActivitiesList[i].name){
+      let myActivity = commonlyUsed(userActivities);
+      for (let i = 0; i < userActivitiesList.length; i++) {
+        if (myActivity === userActivitiesList[i].name) {
           myActivityIcon = userActivitiesList[i].icon;
         }
       }
@@ -294,7 +306,7 @@ $(document).ready(function () {
   }
 
   // Function to create new entries
-  function newEntry(id){
+  function newEntry(id) {
     const postmoodactivity = $("#createform");
     if (postmoodactivity) {
       postmoodactivity.on("submit", (event) => {
@@ -315,9 +327,9 @@ $(document).ready(function () {
             break;
           }
         }
-        if (!moodValue || !activityValue){
+        if (!moodValue || !activityValue) {
           M.toast({ html: "You need to select a mood AND an activity.", classes: "rounded" });
-        } else{
+        } else {
           const newUserData = {
             moodId: moodValue,
             activityId: activityValue,
