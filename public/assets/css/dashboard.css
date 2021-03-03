@@ -7,8 +7,16 @@ h5 {
   margin-bottom: 1.5rem;  
 }
 
+nav {
+  background-color: transparent;
+}
+
 .btn-large {
   border-radius: 6px;
+}
+
+.dropdown-trigger {
+  background-color: transparent;
 }
 
 .card-content {
@@ -25,6 +33,7 @@ h5 {
 }
 
 .dev-team {
+  background-color: transparent;
   margin-bottom: 2rem;
   border-radius: 2rem;
   display: flex;
@@ -59,12 +68,13 @@ h5 {
 }
 
 #dashContent {
-  background-color: lightgray;
+  background-color: transparent;
   align-content: center;
   margin-top: 1rem;
 }
 
 #modalButton {
+  background-color: transparent;
   position: sticky;
   right: 0;
   bottom: 0;

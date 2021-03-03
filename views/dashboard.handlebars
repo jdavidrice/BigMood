@@ -28,12 +28,10 @@
         class="large material-icons theme-switch">
         arrow_drop_down</i></a>
     {{!-- Color Dropdown Structure --}}
-    <ul id='dropdown1' class='dropdown-content'>
-      <li><a href="#!" data-id="1" class="lightTheme">Grey</a></li>
-      <li><a href="#!" data-id="2" class="darkTheme">Black</a></li>
-      <li><a href="#!" data-id="3" class="redTheme">Red</a></li>
-      <li><a href="#!" data-id="4" class="blueTheme">Blue</a></li>
-      <li><a href="#!" data-id="5" class="greenTheme">Green</a></li>
+    <ul id="dropdown1" class="dropdown-content">
+      {{#each themes}}
+      <li><a href="#!" data-id="{{dataValues.id}}">{{dataValues.name}}</a></li>
+      {{/each}}
     </ul>
   </div>
   <li>
