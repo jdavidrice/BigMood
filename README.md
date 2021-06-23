@@ -29,9 +29,26 @@ The "BigMood" web app gives users an easy way to track their mood throughout the
 The deployed app can be found online here: [BigMood App](https://https://bigmoodapp.herokuapp.com/)
 
 A Google Slides presentaion of the app's features and development story: [BigMood Presentation](https://docs.google.com/presentation/d/1Pm2SPSUAXzJR2UoU1Cz5aEdGtsD28mzy99wyRRpd-jw/edit?usp=sharing)
- 
-*   [Return to Top](#BigMood)  
 
+**Project Dependencies**
+
+- bcryptjs: ^2.4.3
+- dotenv: ^8.2.0
+- express: ^4.17.1
+- express-handlebars: ^5.2.0
+- express-session: ^1.17.1
+- mysql2: ^1.7.0
+- passport: ^0.4.1
+- passport-local: ^1.0.0
+- sequelize: ^5.22.3
+
+**Development Dependencies**
+
+- eslint: ^7.19.0
+- eslint-config-airbnb-base: ^14.2.1
+- eslint-plugin-import: ^2.22.1
+- nodemon: ^2.0.7
+  
 ## Motivation   
 
 This app was designed to address the issue of wanting to become more aware of changes in mood throughout the day. It gives our users a simple, non-obtrusive way to track their mood and accompanying activities, to ultimately help them become more aware of their mental states. Noticing and identifying moods, and being able to look back and analyze mood changes, will hopefully allow our users to focus more on doing activities that are correlated with a positive mood, and to hopefully avoid those activities that are correlated with negative mood. 
