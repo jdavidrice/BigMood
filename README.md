@@ -32,22 +32,22 @@ A Google Slides presentaion of the app's features and development story: [BigMoo
 
 **Project Dependencies**
 
-- bcryptjs: ^2.4.3
-- dotenv: ^8.2.0
-- express: ^4.17.1
-- express-handlebars: ^5.2.0
-- express-session: ^1.17.1
-- mysql2: ^1.7.0
-- passport: ^0.4.1
-- passport-local: ^1.0.0
-- sequelize: ^5.22.3
+*  bcryptjs: ^2.4.3
+*  dotenv: ^8.2.0
+*  express: ^4.17.1
+*  express-handlebars: ^5.2.0
+*  express-session: ^1.17.1
+*  mysql2: ^1.7.0
+*  passport: ^0.4.1
+*  passport-local: ^1.0.0
+*  sequelize: ^5.22.3
 
 **Development Dependencies**
 
-- eslint: ^7.19.0
-- eslint-config-airbnb-base: ^14.2.1
-- eslint-plugin-import: ^2.22.1
-- nodemon: ^2.0.7
+*  eslint: ^7.19.0
+*  eslint-config-airbnb-base: ^14.2.1
+*  eslint-plugin-import: ^2.22.1
+*  nodemon: ^2.0.7
   
 ## Motivation   
 
